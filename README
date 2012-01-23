@@ -1,0 +1,19 @@
+
+Dependencies:
+-------------
+Python 2.x  (3.x when mutagen-port is ready)
+wxpython    (Python bindings for wxwidgets)
+mutagen     (Audio metadata module)
+
+Invocation:
+-----------
+PYD3Tagger must be on PYTHONPATH
+switch to PYD3Tagger directory
+
+  + Graphical user interface:
+    -------------------------
+    invoke with > python gui.py
+
+  + Commandline interface:
+    ----------------------
+    under construction
