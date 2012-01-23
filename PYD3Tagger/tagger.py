@@ -97,7 +97,9 @@ class Tagger(object):
         
     def save_single(self, file_id):
         """Write changes to a single file to disk."""
-        self.files[file_id].complex.save()
+        print self.files[file_id].complex
+        if self.files[file_id].complex:
+            self.files[file_id].complex.save()
         file = self.files[file_id].simple
         # We are working with two separate tagging-objects.
         # A simple one for textual and a complex one for media fields.
