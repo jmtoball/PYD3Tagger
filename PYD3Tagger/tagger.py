@@ -97,7 +97,6 @@ class Tagger(object):
         
     def save_single(self, file_id):
         """Write changes to a single file to disk."""
-        print self.files[file_id].complex
         if self.files[file_id].complex:
             self.files[file_id].complex.save()
         file = self.files[file_id].simple
