@@ -144,7 +144,6 @@ class ImageTag(Tag):
 
     def fill(self):
         images = self.tagger.read_single(self.file_id, self.tag_type)
-        print images
         if images and self.apic_name in images:
             bg = images[self.apic_name].name
             fg = "default.png"
