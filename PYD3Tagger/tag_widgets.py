@@ -129,6 +129,7 @@ class TracknumTag(Tag):
 
 class ImageTag(Tag):
     """Tag subclass that provides widgets and functions for embedded images like cover images."""
+    apic_name = "Cover (front)"
     
     def make_widgets(self, parent):
         widgets = {} 
@@ -143,8 +144,9 @@ class ImageTag(Tag):
 
     def fill(self):
         images = self.tagger.read_single(self.file_id, self.tag_type)
-        if images:
-            bg = images.values()[0].name
+        print images
+        if images and self.apic_name in images:
+            bg = images[self.apic_name].name
             fg = "default.png"
             mask = "mask.png"
             # The Cover Image is overlayed by a jewelcase for some eyecandy.
@@ -153,7 +155,7 @@ class ImageTag(Tag):
 
     def change(self, event):
         self.path = event.GetPath()
-        self.tagger.write_single(self.file_id, self.tag_type, path=self.path, name="cover image")
+        self.tagger.write_single(self.file_id, self.tag_type, path=self.path, name=self.apic_name)
         self.fill()
 
     def place_widgets(self, widgets, grid, row):
@@ -173,7 +175,7 @@ class ImageTag(Tag):
         if images:
             path = images.values()[0].name
             for file_id in selection:
-                self.tagger.write_single(file_id, self.tag_type, path=path, name="cover image")
+                self.tagger.write_single(file_id, self.tag_type, path=path, name=self.apic_name)
         self.main.refresh("list")
 
 
